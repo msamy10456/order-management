@@ -16,7 +16,7 @@ class ProcessPaymentRequest extends FormRequest
 
     public function rules(): array
     {
-        $supportedGateways = (new PaymentGatewayManager())->availableGateways();
+        $supportedGateways = (new PaymentGatewayManager)->availableGateways();
 
         return [
             'order_id' => ValidationRuleHelper::foreignKeyRules([

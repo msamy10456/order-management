@@ -23,7 +23,7 @@ class ProfileRequest extends FormRequest
             'name' => ValidationRuleHelper::stringRules(['required' => 'sometimes']),
             'phone' => ValidationRuleHelper::phoneRules(['required' => 'sometimes']),
             'email' => ValidationRuleHelper::emailRules(['required' => $inMobileTypes ? 'nullable' : 'sometimes']),
-            'gender' => ValidationRuleHelper::enumRules( GenderEnum::getValues(), ['required' => 'nullable']),
+            'gender' => ValidationRuleHelper::enumRules(GenderEnum::getValues(), ['required' => 'nullable']),
             'avatar' => ValidationRuleHelper::storeOrUpdateImageRules(true),
             'address' => ValidationRuleHelper::stringRules(['required' => 'sometimes']),
         ];

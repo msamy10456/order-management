@@ -11,7 +11,7 @@ use Modules\Payment\Models\Payment;
 
 class AdminPaymentService
 {
-    public function __construct(protected PaymentGatewayManager $gatewayManager = new PaymentGatewayManager()) {}
+    public function __construct(protected PaymentGatewayManager $gatewayManager = new PaymentGatewayManager) {}
 
     public function index()
     {
@@ -30,7 +30,6 @@ class AdminPaymentService
             ->findOrFail($id);
     }
 
-
     /**
      * Process payment simulation for an order.
      *
@@ -42,7 +41,7 @@ class AdminPaymentService
             $order = Order::with('items')->findOrFail($data['order_id']);
             if ((int) $order->status !== OrderStatusEnum::CONFIRMED) {
                 throw new ValidationErrorsException([
-                    'order' => 'Payments can only be processed for orders in confirmed status.'
+                    'order' => 'Payments can only be processed for orders in confirmed status.',
                 ]);
             }
             $gateway = $this->gatewayManager->getGateway($data['method']);
@@ -62,5 +61,4 @@ class AdminPaymentService
             return $payment;
         });
     }
-
 }

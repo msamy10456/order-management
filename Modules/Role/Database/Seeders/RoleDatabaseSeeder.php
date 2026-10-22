@@ -38,8 +38,8 @@ class RoleDatabaseSeeder extends Seeder
 
                 PermissionHelper::permissionModel()::firstOrCreate([
                     'name' => $permission['name'],
-                    'guard_name' => 'web'
-            ], $permission);
+                    'guard_name' => 'web',
+                ], $permission);
                 $latestPermissions[] = $permission;
             }
         }
@@ -55,7 +55,7 @@ class RoleDatabaseSeeder extends Seeder
     {
         $allPermissions = $this->createPermissions();
 
-        $role = Role::query()->firstOrCreate(['name' => 'admin' ,'guard_name' => 'web'], ['name' => 'admin','guard_name' => 'web']);
+        $role = Role::query()->firstOrCreate(['name' => 'admin', 'guard_name' => 'web'], ['name' => 'admin', 'guard_name' => 'web']);
 
         $role->permissions()->sync($allPermissions->pluck('id')->toArray());
     }

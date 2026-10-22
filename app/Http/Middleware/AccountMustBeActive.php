@@ -25,7 +25,7 @@ class AccountMustBeActive
         }
 
         if (UserStatusEnum::isInActive(auth()->user())) {
-            (new LogoutUser())->handle();
+            (new LogoutUser)->handle();
 
             return $this->errorResponse(
                 null,

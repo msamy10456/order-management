@@ -2,7 +2,6 @@
 
 namespace App\Models\Builders;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Auth\Enums\UserTypeEnum;
 use Modules\Auth\Helpers\UserTypeHelper;
@@ -25,6 +24,7 @@ class UserBuilder extends Builder
             ]
         );
     }
+
     public function basicInformation()
     {
         $this->select([
@@ -35,6 +35,7 @@ class UserBuilder extends Builder
             'wallet',
         ]);
     }
+
     public function withType($type)
     {
         $this->with($type);
@@ -60,14 +61,14 @@ class UserBuilder extends Builder
         $columns = array_diff([
             'users.id',
             'users.name',
-        ], array_map(fn($column) => "users.$column", $excludeColumns));
+        ], array_map(fn ($column) => "users.$column", $excludeColumns));
 
         return $this->select([...$columns, ...$additionalColumns]);
     }
 
     public function withConditionalAvatar(bool $withAvatar = true)
     {
-        return $this->when($withAvatar, fn(self $q) => $q->with('avatar'));
+        return $this->when($withAvatar, fn (self $q) => $q->with('avatar'));
     }
 
     public function withMinimalDetails(bool $withAvatar = true, array $excludeColumns = [], array $additionalColumns = [])
@@ -86,6 +87,7 @@ class UserBuilder extends Builder
     {
         return $this->where('status', true);
     }
+
     public function whereReatched($type): UserBuilder
     {
         return $this->where($type, true);
@@ -95,6 +97,4 @@ class UserBuilder extends Builder
     {
         return $this->where('id', '!=', auth('sanctum')->user()?->id);
     }
-
-  
 }

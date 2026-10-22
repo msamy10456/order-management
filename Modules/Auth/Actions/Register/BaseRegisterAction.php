@@ -32,8 +32,8 @@ class BaseRegisterAction
                 if (isset($data['email'])) {
                     UserService::columnExists($data['email'], columnName: 'email', errorKey: 'email');
                 }
-                $data['type']=UserTypeEnum::USER;
-                $byAdmin=true;
+                $data['type'] = UserTypeEnum::USER;
+                $byAdmin = true;
                 $user = User::create($data + [
                     'status' => false,
                     'approval' => $data['type'] == UserTypeEnum::USER,

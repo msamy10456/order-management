@@ -5,7 +5,9 @@ namespace Modules\Payment\Enum;
 enum PaymentStatusEnum
 {
     public const PENDING = 1;
+
     public const SUCCESSFUL = 2;
+
     public const FAILED = 3;
 
     public static function availableTypes(): array

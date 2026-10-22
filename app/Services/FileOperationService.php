@@ -13,22 +13,22 @@ class FileOperationService
         object $class,
         string $collectionName = 'default',
         string $fileName = 'img',
-        string $storedFileName = null
+        ?string $storedFileName = null
     ): object {
         return json_decode($class
             ->addMediaFromRequest($fileName)
-            ->usingFileName($storedFileName ?: Str::random() . '.png')
+            ->usingFileName($storedFileName ?: Str::random().'.png')
             ->toMediaCollection($collectionName));
     }
 
     public function storeFileFromRequest(
         object $class,
         string $requestFileName = 'media',
-        string $storedFileName = null,
+        ?string $storedFileName = null,
         string $collectionName = 'default',
     ) {
 
-        $storedFileName = ($storedFileName ?: Str::random(15)) . '.';
+        $storedFileName = ($storedFileName ?: Str::random(15)).'.';
         $uploadedFileExtension = explode('/', request()->file($requestFileName)->getMimeType())[0];
         // append the right extension
         switch ($uploadedFileExtension) {
@@ -63,7 +63,7 @@ class FileOperationService
         return json_decode(
             $model
                 ->addMedia($file)
-                ->usingFileName(Str::random() . ".$extension")
+                ->usingFileName(Str::random().".$extension")
                 ->toMediaCollection($mediaCollection)
         );
     }

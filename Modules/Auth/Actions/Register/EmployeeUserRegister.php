@@ -7,7 +7,6 @@ use Modules\Auth\Enums\AuthEnum;
 use Modules\Auth\Enums\UserTypeEnum;
 use Modules\Auth\Strategies\Verifiable;
 
-
 class EmployeeUserRegister
 {
     public function handle(array $data)

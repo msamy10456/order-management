@@ -36,7 +36,7 @@ readonly class PhoneUpdateService
             'dial_code_length' => $data['dial_code_length'] ?? null,
             'expires_at' => now()->addHours(self::verificationTokenExpiryHours()),
         ]);
-        
+
         $this->otpContract->send($data['phone'], "OTP is $code");
     }
 

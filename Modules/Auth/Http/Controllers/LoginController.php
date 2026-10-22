@@ -5,8 +5,6 @@ namespace Modules\Auth\Http\Controllers;
 use App\Traits\HttpResponse;
 use Illuminate\Routing\Controller;
 use Modules\Auth\Http\Requests\Login\DashboardLoginRequest;
-use Modules\Auth\Http\Requests\Login\LoginRequest;
-use Modules\Auth\Http\Requests\Login\MobileLoginRequest;
 use Modules\Auth\Services\LoginService;
 use Modules\Auth\Transformers\UserResource;
 

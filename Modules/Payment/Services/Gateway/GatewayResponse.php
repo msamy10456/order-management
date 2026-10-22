@@ -9,12 +9,13 @@ final class GatewayResponse
         public readonly ?string $transactionId = null,
         public readonly string $message = '',
         public readonly array $raw = [],
-    ) {
-    }
+    ) {}
+
     public static function success(string $transactionId, string $message = 'Payment successful.', array $raw = []): self
     {
         return new self(true, $transactionId, $message, $raw);
     }
+
     public static function failure(string $message, array $raw = []): self
     {
         return new self(false, null, $message, $raw);

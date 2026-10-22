@@ -22,6 +22,7 @@ class SocialiteService
     {
         return Socialite::driver($requestProvider)->redirect();
     }
+
     public function handleProviderCallback(array $data, $type)
     {
         $requestProvider = $data['provider'];

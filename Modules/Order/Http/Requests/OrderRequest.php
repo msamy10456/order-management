@@ -8,7 +8,6 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 use Modules\Order\Enum\OrderStatusEnum;
-use Modules\Order\Enum\OrderTypeEnum;
 
 class OrderRequest extends FormRequest
 {

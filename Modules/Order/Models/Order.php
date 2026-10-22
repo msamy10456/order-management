@@ -12,10 +12,10 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Order extends Model implements HasMedia
 {
-    use OrderRelations,
+    use InteractsWithMedia,
+        OrderRelations,
         PaginationTrait,
-        Searchable,
-        InteractsWithMedia;
+        Searchable;
 
     protected $fillable = [
         'user_id',
@@ -31,5 +31,4 @@ class Order extends Model implements HasMedia
     {
         return new OrderBuilder($query);
     }
-
 }

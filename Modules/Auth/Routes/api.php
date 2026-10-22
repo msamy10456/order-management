@@ -42,10 +42,10 @@ Route::group(['middleware' => GeneralHelper::getDefaultLoggedUserMiddlewares()],
     Route::post('refresh_tokens/rotate', [RefreshTokenController::class, 'rotate']);
     Route::put('password/change_password', [PasswordController::class, 'changePassword']);
 
-//    Route::group(['prefix' => 'phone_number', 'middleware' => [MobileTypesOnlyMiddleware::class]], function () {
-//        Route::post('', [PhoneUpdateController::class, 'sendCode'])->middleware('throttle:1,1');
-//        Route::patch('', [PhoneUpdateController::class, 'update']);
-//    });
+    //    Route::group(['prefix' => 'phone_number', 'middleware' => [MobileTypesOnlyMiddleware::class]], function () {
+    //        Route::post('', [PhoneUpdateController::class, 'sendCode'])->middleware('throttle:1,1');
+    //        Route::patch('', [PhoneUpdateController::class, 'update']);
+    //    });
 
     Route::group(['prefix' => 'profile'], function () {
         Route::get('', [ProfileController::class, 'show']);

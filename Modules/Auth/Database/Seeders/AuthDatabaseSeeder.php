@@ -4,11 +4,8 @@ namespace Modules\Auth\Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Modules\Address\Models\Address;
 use Modules\Auth\Enums\AuthEnum;
 use Modules\Auth\Enums\UserTypeEnum;
-use Modules\Auth\Helpers\UserTypeHelper;
-use Illuminate\Support\Str;
 
 class AuthDatabaseSeeder extends Seeder
 {
@@ -33,7 +30,7 @@ class AuthDatabaseSeeder extends Seeder
                 'status' => true,
                 'password' => $alphaType,
                 'type' => $type,
-                'phone' => "+20112345678$phoneCounter"
+                'phone' => "+20112345678$phoneCounter",
             ]);
 
             if ($handleKey == 'phone') {

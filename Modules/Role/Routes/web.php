@@ -15,5 +15,5 @@ use Modules\Role\Http\Controllers\AdminRoleController;
 */
 
 Route::group([], function () {
-    //Route::resource('role', AdminRoleController::class)->names('role');
+    // Route::resource('role', AdminRoleController::class)->names('role');
 });

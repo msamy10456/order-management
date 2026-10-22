@@ -21,7 +21,7 @@ class ValidateCodeRequest extends FormRequest
     {
         return [
             'code' => ValidationRuleHelper::integerRules(),
-            'code_type'=>    ValidationRuleHelper::enumRules(VerifyTokenTypeEnum::availableTypes()),
+            'code_type' => ValidationRuleHelper::enumRules(VerifyTokenTypeEnum::availableTypes()),
             'handle' => ['required'],
         ];
     }

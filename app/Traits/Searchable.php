@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait Searchable
 {
-    public function scopeSearchByForeignKey(Builder $builder, string $foreignKeyColumn, string $value = null)
+    public function scopeSearchByForeignKey(Builder $builder, string $foreignKeyColumn, ?string $value = null)
     {
         return $builder->when(
             $value,
-            fn($innerQuery) => $innerQuery->where($foreignKeyColumn, $value)
+            fn ($innerQuery) => $innerQuery->where($foreignKeyColumn, $value)
         );
     }
 

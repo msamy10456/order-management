@@ -17,7 +17,7 @@ class BaseRegisterRequest extends FormRequest
                 'required' => $inUpdate ? 'sometimes' : 'required',
             ]),
             'email' => ValidationRuleHelper::emailRules([
-                'required' => $inUpdate ? 'sometimes': 'required',
+                'required' => $inUpdate ? 'sometimes' : 'required',
             ]),
             'password' => ValidationRuleHelper::defaultPasswordRules([
                 'required' => $inUpdate ? 'sometimes' : 'required',

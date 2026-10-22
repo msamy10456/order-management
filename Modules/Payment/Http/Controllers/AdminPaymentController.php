@@ -4,7 +4,6 @@ namespace Modules\Payment\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Traits\HttpResponse;
-use Modules\Payment\Http\Requests\PaymentRequest;
 use Modules\Payment\Http\Requests\ProcessPaymentRequest;
 use Modules\Payment\Services\AdminPaymentService;
 use Modules\Payment\Transformers\PaymentResource;

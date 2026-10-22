@@ -2,8 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Helpers\DateHelper;
-use App\Helpers\TranslationHelper;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
@@ -24,7 +22,7 @@ class ValidationRuleHelper
     {
         $ignoredColumn = $inUpdate ? $ignoredColumn : null;
 
-        return "unique:$table,$column" . ($inUpdate ? (",$idValue,$ignoredColumn") : '');
+        return "unique:$table,$column".($inUpdate ? (",$idValue,$ignoredColumn") : '');
     }
 
     public static function sameLoggedUserPassword(array $replaceDefaultRules = []): array
@@ -166,7 +164,7 @@ class ValidationRuleHelper
     {
         $rules = [
             'required' => 'required',
-            'date_format' => 'date_format:' . DateHelper::defaultDateFormat(),
+            'date_format' => 'date_format:'.DateHelper::defaultDateFormat(),
         ];
 
         return static::replaceDefaultRules($rules, $replaceDefaultRules);
@@ -176,7 +174,7 @@ class ValidationRuleHelper
     {
         $rules = [
             'required' => 'required',
-            'date_format' => 'date_format:' . DateHelper::defaultDateTimeFormat(),
+            'date_format' => 'date_format:'.DateHelper::defaultDateTimeFormat(),
         ];
 
         return static::replaceDefaultRules($rules, $replaceDefaultRules);
@@ -186,7 +184,7 @@ class ValidationRuleHelper
     {
         $rules = [
             'required' => 'required',
-            'date_format' => 'date_format:' . DateHelper::defaultYearFormat(),
+            'date_format' => 'date_format:'.DateHelper::defaultYearFormat(),
         ];
 
         return static::replaceDefaultRules($rules, $replaceDefaultRules);
@@ -196,7 +194,7 @@ class ValidationRuleHelper
     {
         $rules = [
             'required' => 'required',
-            'date_format' => 'date_format:' . DateHelper::defaultTimeFormat(),
+            'date_format' => 'date_format:'.DateHelper::defaultTimeFormat(),
         ];
 
         return static::replaceDefaultRules($rules, $replaceDefaultRules);
@@ -385,9 +383,9 @@ class ValidationRuleHelper
         string $model,
         array $value,
         array &$errors,
-               $modelID = null,
+        $modelID = null,
         string $keyName = 'name',
-        string $translatedKeyName = null,
+        ?string $translatedKeyName = null,
         array $additionalConditions = [],
     ): bool|array {
         $availableLocales = TranslationHelper::$availableLocales;
@@ -412,7 +410,7 @@ class ValidationRuleHelper
         $item = $query
             ->when(
                 $modelID,
-                fn($innerQuery) => $innerQuery->where('id', '<>', $modelID)
+                fn ($innerQuery) => $innerQuery->where('id', '<>', $modelID)
             )
             ->first();
 

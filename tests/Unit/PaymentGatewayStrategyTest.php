@@ -19,7 +19,7 @@ class PaymentGatewayStrategyTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->manager = new PaymentGatewayManager();
+        $this->manager = new PaymentGatewayManager;
     }
 
     public function test_manager_resolves_supported_gateways(): void
@@ -46,7 +46,7 @@ class PaymentGatewayStrategyTest extends TestCase
 
     public function test_credit_card_gateway_successful_simulation(): void
     {
-        $gateway = new CreditCardGateway();
+        $gateway = new CreditCardGateway;
         $order = new Order(['customer_email' => 'test@example.com']);
 
         $result = $gateway->process($order, ['card_number' => '4242424242424242']);
@@ -58,8 +58,8 @@ class PaymentGatewayStrategyTest extends TestCase
 
     public function test_credit_card_gateway_failure_simulation(): void
     {
-        $gateway = new CreditCardGateway();
-        $order = new Order();
+        $gateway = new CreditCardGateway;
+        $order = new Order;
 
         $result = $gateway->process($order, ['card_number' => '0000000000000000']);
 
@@ -70,7 +70,7 @@ class PaymentGatewayStrategyTest extends TestCase
 
     public function test_paypal_gateway_successful_simulation(): void
     {
-        $gateway = new PaypalGateway();
+        $gateway = new PaypalGateway;
         $order = new Order(['customer_email' => 'buyer@example.com']);
 
         $result = $gateway->process($order, []);
@@ -82,8 +82,8 @@ class PaymentGatewayStrategyTest extends TestCase
 
     public function test_paymob_gateway_successful_simulation(): void
     {
-        $gateway = new PaymobGateway();
-        $order = new Order();
+        $gateway = new PaymobGateway;
+        $order = new Order;
 
         $result = $gateway->process($order, []);
 

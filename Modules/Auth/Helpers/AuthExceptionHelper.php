@@ -33,13 +33,13 @@ class AuthExceptionHelper extends BaseExceptionHelper
                 translate_word('account_not_verified') => self::generalErrorResponse($e, additional: [
                     'forbidding_reason' => ForbiddenLoginEnum::NOT_VERIFIED,
                 ],
-                redirect:RedirectEnum::NOT_VERIFIED),
+                    redirect: RedirectEnum::NOT_VERIFIED),
                 translate_word('not_approved') => self::generalErrorResponse($e, additional: [
                     'forbidding_reason' => ForbiddenLoginEnum::NOT_APPROVED,
                 ]),
                 translate_word('blocked_account') => self::generalErrorResponse($e, additional: [
                     'forbidding_reason' => ForbiddenLoginEnum::ACCOUNT_SUSPENDED,
-                ],redirect:RedirectEnum::ACCOUNT_SUSPENDED),
+                ], redirect: RedirectEnum::ACCOUNT_SUSPENDED),
 
                 default => self::generalErrorResponse($e),
             };

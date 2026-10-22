@@ -8,6 +8,7 @@ use Modules\Order\Models\Scopes\OrderScope;
 class OrderBuilder extends Builder
 {
     use OrderScope;
+
     public function indexDetails()
     {
         return $this->select([
@@ -21,6 +22,7 @@ class OrderBuilder extends Builder
             'created_at',
         ])->withTotalPriceItems()->withCountItems();
     }
+
     public function showDetails()
     {
         return $this->select([
@@ -44,6 +46,7 @@ class OrderBuilder extends Builder
     {
         return $this->withSum('items', 'total');
     }
+
     public function withCountItems()
     {
         return $this->withSum('items', 'quantity');
@@ -53,6 +56,7 @@ class OrderBuilder extends Builder
     {
         return $this->with('items');
     }
+
     public function withPayments()
     {
         return $this->with('payments');

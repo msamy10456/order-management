@@ -23,8 +23,8 @@ class EmployeeUserRegisterRequest extends FormRequest
             ...BaseRegisterRequest::baseRules(),
             'avatar' => ValidationRuleHelper::fileRules(true),
             'role_id' => ValidationRuleHelper::foreignKeyRules([
-                'exists' => 'exists:roles,id'
-            ])
+                'exists' => 'exists:roles,id',
+            ]),
         ];
     }
 
@@ -32,6 +32,7 @@ class EmployeeUserRegisterRequest extends FormRequest
     {
         $this->throwValidationException($validator);
     }
+
     public function messages(): array
     {
         return [

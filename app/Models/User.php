@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Modules\Auth\Enums\AuthEnum;
 use Modules\Auth\Traits\HasVerifyTokens;
-use Modules\Auth\Traits\UserRelations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasPermissions;
@@ -18,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasFactory, Notifiable, HasApiTokens,InteractsWithMedia,HasRoles,HasPermissions,HasVerifyTokens;
+    use HasApiTokens, HasFactory, HasPermissions,HasRoles,HasVerifyTokens,InteractsWithMedia,Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -31,7 +30,7 @@ class User extends Authenticatable implements HasMedia
         'password',
         'type',
         'phone',
-        'email_verified_at'
+        'email_verified_at',
     ];
 
     /**
@@ -56,6 +55,7 @@ class User extends Authenticatable implements HasMedia
             'password' => 'hashed',
         ];
     }
+
     public function newEloquentBuilder($query): UserBuilder
     {
         return new UserBuilder($query);

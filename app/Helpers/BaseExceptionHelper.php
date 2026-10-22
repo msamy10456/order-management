@@ -10,7 +10,7 @@ abstract class BaseExceptionHelper
 {
     abstract public static function handle(Exceptions $exceptions);
 
-    protected static function generalErrorResponse(Exception $exception, $data = null, ?int $code = null, $message = null, $additional = [] ,$redirect = '')
+    protected static function generalErrorResponse(Exception $exception, $data = null, ?int $code = null, $message = null, $additional = [], $redirect = '')
     {
         $class = new class
         {

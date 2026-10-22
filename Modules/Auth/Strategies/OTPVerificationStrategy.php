@@ -85,7 +85,7 @@ class OTPVerificationStrategy extends AbstractVerifyUser implements Verifiable
     {
         $user = $user ?: auth()->user();
 
-        //TODO update code
+        // TODO update code
         [$user, $code] = $this->generalSendCode($user, VerifyTokenTypeEnum::UPDATE_PHONE_NUMBER);
 
         $this->otpContract->send($user->phone, $this->generateVerifyMessage($code));

@@ -3,7 +3,6 @@
 namespace Modules\Auth\Helpers;
 
 use Modules\Auth\Enums\UserTypeEnum;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class UserTypeHelper
 {

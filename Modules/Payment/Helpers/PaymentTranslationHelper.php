@@ -8,7 +8,7 @@ class PaymentTranslationHelper
     {
         return [
             'payment' => 'Payment',
-            'payment_declined' => 'Payment was declined'
+            'payment_declined' => 'Payment was declined',
         ];
     }
 
@@ -16,8 +16,7 @@ class PaymentTranslationHelper
     {
         return [
             'payment' => 'الدفع',
-            'payment_declined' => 'تم رفض الدفع'
+            'payment_declined' => 'تم رفض الدفع',
         ];
     }
-
 }

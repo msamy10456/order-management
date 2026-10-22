@@ -10,8 +10,8 @@ use Modules\Payment\Traits\PaymentRelations;
 
 class Payment extends Model
 {
-    use PaymentRelations,
-        PaginationTrait,
+    use PaginationTrait,
+        PaymentRelations,
         Searchable;
 
     protected $fillable = [

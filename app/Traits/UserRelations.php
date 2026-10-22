@@ -11,5 +11,4 @@ trait UserRelations
     {
         return MediaHelper::mediaRelationship($this, AuthEnum::AVATAR_COLLECTION_NAME);
     }
-   
 }

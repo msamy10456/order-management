@@ -16,7 +16,7 @@ class PaypalGateway implements PaymentGatewayInterface
             return [
                 'success' => false,
                 'status' => PaymentStatusEnum::FAILED,
-                'transaction_id' => 'PAYID-FAIL-' . uniqid(),
+                'transaction_id' => 'PAYID-FAIL-'.uniqid(),
                 'message' => 'PayPal payment was rejected by customer or cancelled.',
                 'details' => [
                     'gateway' => 'paypal',
@@ -28,7 +28,7 @@ class PaypalGateway implements PaymentGatewayInterface
         return [
             'success' => true,
             'status' => PaymentStatusEnum::SUCCESSFUL,
-            'transaction_id' => 'PAYID-' . strtoupper(uniqid()),
+            'transaction_id' => 'PAYID-'.strtoupper(uniqid()),
             'message' => 'PayPal payment approved and captured.',
             'details' => [
                 'gateway' => 'paypal',

@@ -19,7 +19,7 @@ class CreditCardGateway implements PaymentGatewayInterface
             return [
                 'success' => false,
                 'status' => PaymentStatusEnum::FAILED,
-                'transaction_id' => 'CC-FAIL-' . uniqid(),
+                'transaction_id' => 'CC-FAIL-'.uniqid(),
                 'message' => 'Credit card payment was declined.',
                 'details' => [
                     'gateway' => 'credit_card',
@@ -31,7 +31,7 @@ class CreditCardGateway implements PaymentGatewayInterface
         return [
             'success' => true,
             'status' => PaymentStatusEnum::SUCCESSFUL,
-            'transaction_id' => 'CC-TXN-' . strtoupper(uniqid()),
+            'transaction_id' => 'CC-TXN-'.strtoupper(uniqid()),
             'message' => 'Credit card payment processed successfully.',
             'details' => [
                 'gateway' => 'credit_card',

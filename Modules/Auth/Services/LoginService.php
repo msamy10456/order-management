@@ -41,7 +41,7 @@ class LoginService
 
     private function findUser(array $data, $type): ?User
     {
-        return  User::query()
+        return User::query()
             ->loginByType($data, $type)
             ->with('avatar')
             ->select([

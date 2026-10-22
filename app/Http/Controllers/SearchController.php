@@ -10,11 +10,11 @@ class SearchController extends Controller
 {
     public static function searchForHandle(Builder $query, array $searchableKeys, $handle, array $translatedKeys = [], bool $orWhere = false): void
     {
-        if (!is_null($handle)) {
-            if (!$orWhere) {
-                $query->where(fn(Builder $builder) => static::searchLogic($builder, $searchableKeys, $handle, $translatedKeys));
+        if (! is_null($handle)) {
+            if (! $orWhere) {
+                $query->where(fn (Builder $builder) => static::searchLogic($builder, $searchableKeys, $handle, $translatedKeys));
             } else {
-                $query->orWhere(fn(Builder $builder) => static::searchLogic($builder, $searchableKeys, $handle, $translatedKeys));
+                $query->orWhere(fn (Builder $builder) => static::searchLogic($builder, $searchableKeys, $handle, $translatedKeys));
             }
         }
     }
@@ -25,7 +25,7 @@ class SearchController extends Controller
         foreach ($searchableKeys as $key) {
             if (in_array($key, $translatedKeys)) {
                 foreach (TranslationHelper::$availableLocales as $locale) {
-                    if (!$isFirstKey) {
+                    if (! $isFirstKey) {
                         $query->where("$key->$locale", 'like', "%$handle%");
                         $isFirstKey = true;
                     } else {
@@ -33,7 +33,7 @@ class SearchController extends Controller
                     }
                 }
             } else {
-                if (!$isFirstKey) {
+                if (! $isFirstKey) {
                     $query->where($key, 'like', "%$handle%");
                     $isFirstKey = true;
                 } else {

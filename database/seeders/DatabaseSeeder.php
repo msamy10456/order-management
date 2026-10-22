@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Modules\Auth\Database\Seeders\AuthDatabaseSeeder;
-use Modules\Offerwall\Database\Seeders\OfferwallDatabaseSeeder;
 use Modules\Role\Database\Seeders\RoleDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder

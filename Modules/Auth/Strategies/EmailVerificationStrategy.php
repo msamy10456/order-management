@@ -58,9 +58,13 @@ class EmailVerificationStrategy extends AbstractVerifyUser implements Verifiable
             'password' => $newPassword,
         ])->save();
     }
-    public function validateCode($handle, $code, $codeType = VerifyTokenTypeEnum::VERIFICATION){
+
+    public function validateCode($handle, $code, $codeType = VerifyTokenTypeEnum::VERIFICATION)
+    {
         $this->generalValidateCode($handle, $code, $codeType);
     }
-    public function sendPhoneCode(string $newPhone, $user = null){}
-    public function updatePhone($code, array $data = [], $user = null){}
+
+    public function sendPhoneCode(string $newPhone, $user = null) {}
+
+    public function updatePhone($code, array $data = [], $user = null) {}
 }

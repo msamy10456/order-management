@@ -1,54 +1,39 @@
 <?php
 
-use Illuminate\Support\Str;
-use App\Helpers\GeneralHelper;
 use App\Exceptions\InternalServerErrorException;
 use App\Exceptions\ValidationErrorsException;
+use App\Http\Middleware\AccountMustBeActive;
+use App\Http\Middleware\AlwaysAcceptJson;
+use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\MustBeVerified;
+use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\SetDefaultLocale;
+use App\Http\Middleware\TrustProxies;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Illuminate\Http\Middleware\HandleCors;
+use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
+use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance;
 use Illuminate\Foundation\Http\Middleware\TrimStrings;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
-use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance;
-use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Http\Exceptions\ThrottleRequestsException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
-use Symfony\Component\HttpFoundation\Response;
-
-use App\Http\Middleware\{
-    Authenticate,
-    RedirectIfAuthenticated,
-    AccountMustBeActive,
-    AlwaysAcceptJson,
-    Localization,
-    TrustProxies,
-    SetDefaultLocale,
-    MustBeVerified
-};
-use Modules\Auth\Http\Middleware\{
-    CheckUserType,
-    ReachedUserTypeMiddleware
-};
-use Modules\Role\Http\Middleware\PermissionMiddleware;
+use Illuminate\Http\Middleware\HandleCors;
+use Illuminate\Support\Str;
 use Modules\Auth\Helpers\AuthExceptionHelper;
-use Modules\Comment\Helpers\CommentExceptionHelper;
-use Modules\Question\Helpers\QuestionExceptionHelper;
-use Modules\Course\Helpers\CourseExceptionHelper;
-use Modules\Upgrade\Helpers\UpgradeExceptionHelper;
-use Modules\Company\Helpers\CompanyExceptionHelper;
-use Modules\CoinExchange\Helpers\CoinExceptionHelper;
-use Modules\Accountant\Helpers\AccountantExceptionHelper;
-use Modules\Chat\Helpers\ConversationExceptionHelper;
+use Modules\Auth\Http\Middleware\CheckUserType;
 use Modules\Role\Helpers\PermissionExceptionHelper;
+use Modules\Role\Http\Middleware\PermissionMiddleware;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-if (!function_exists('handleExceptions')) {
+if (! function_exists('handleExceptions')) {
 
     function handleExceptions(Exceptions $exceptions): void
     {
-        $httpResponse = new class {
+        $httpResponse = new class
+        {
             use \App\Traits\HttpResponse;
         };
 
@@ -67,6 +52,7 @@ if (!function_exists('handleExceptions')) {
             $msg = Str::contains($e->getMessage(), 'No query', true)
                 ? translate_word('record_not_found')
                 : $e->getMessage();
+
             return $httpResponse->errorResponse(null, Response::HTTP_NOT_FOUND, $msg);
         });
 
@@ -82,6 +68,7 @@ if (!function_exists('handleExceptions')) {
             $message = $e->getMessage() === 'Service Unavailable'
                 ? translate_word('maintenance_mode')
                 : $e->getMessage();
+
             return $httpResponse->errorResponse(code: $e->getStatusCode(), message: $message);
         });
     }
@@ -89,8 +76,8 @@ if (!function_exists('handleExceptions')) {
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__ . '/../routes/web.php',
-        commands: __DIR__ . '/../routes/console.php',
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
         health: '/up'
     )
     ->withMiddleware(function (Middleware $middleware) {
@@ -98,7 +85,6 @@ return Application::configure(basePath: dirname(__DIR__))
             SetDefaultLocale::class,
             AlwaysAcceptJson::class,
         ]);
-
 
         $middleware->api(['throttle:api']);
 

@@ -21,7 +21,7 @@ class PaymentException extends BaseExceptionClass
         );
     }
 
-    //GatewayResponse
+    // GatewayResponse
     public static function unsupportedMethod(string $method): self
     {
         throw new self(
@@ -29,6 +29,7 @@ class PaymentException extends BaseExceptionClass
             Response::HTTP_BAD_REQUEST
         );
     }
+
     public static function invalidGateway(string $method): self
     {
         throw new self(
@@ -36,5 +37,4 @@ class PaymentException extends BaseExceptionClass
             Response::HTTP_BAD_REQUEST
         );
     }
-
 }

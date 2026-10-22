@@ -34,7 +34,7 @@ class DateHelper
         return 'Y';
     }
 
-    public static function dateDiffForHumans(Carbon $date = null): string
+    public static function dateDiffForHumans(?Carbon $date = null): string
     {
         $date = $date ?: now();
 

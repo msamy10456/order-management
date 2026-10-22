@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Helpers\GeneralHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 

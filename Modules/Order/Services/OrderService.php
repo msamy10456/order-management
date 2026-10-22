@@ -57,7 +57,7 @@ class OrderService
 
         if ($order->payments()->exists()) {
             throw new ValidationErrorsException([
-                'order' => __('messages.cannot_delete_order_with_payments') ?: 'Cannot delete an order that has associated payments.'
+                'order' => __('messages.cannot_delete_order_with_payments') ?: 'Cannot delete an order that has associated payments.',
             ]);
         }
 

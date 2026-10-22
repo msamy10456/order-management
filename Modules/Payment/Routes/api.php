@@ -3,7 +3,6 @@
 use App\Helpers\GeneralHelper;
 use Illuminate\Support\Facades\Route;
 use Modules\Payment\Http\Controllers\AdminPaymentController;
-use Modules\Role\Helpers\PermissionHelper;
 
 Route::group(['middleware' => GeneralHelper::getDefaultLoggedUserMiddlewares()], function () {
     Route::prefix('payments')->group(function () {

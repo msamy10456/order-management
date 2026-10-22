@@ -10,8 +10,8 @@ class PaginationHelper
     public static function paginationCountPerPage()
     {
         $count = request()->input('per_page') ?: 5;
-        if(request()->per_page === 'all'){
-            return PHP_INT_MAX-1;
+        if (request()->per_page === 'all') {
+            return PHP_INT_MAX - 1;
         }
 
         return ($count >= 5 && $count <= 100) ? $count : 5;

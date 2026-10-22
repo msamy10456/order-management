@@ -7,7 +7,7 @@ class ValidationMessageHelper extends \Khattab\Prepare\Helpers\ValidationMessage
     /**
      * Get Name Validation Messages
      */
-    public static function stringErrorMessages(string $keyName = 'name', array $replaceDefaultErrorMessages = [], string $translatedKeyName = null): array
+    public static function stringErrorMessages(string $keyName = 'name', array $replaceDefaultErrorMessages = [], ?string $translatedKeyName = null): array
     {
         $translatedKeyName = $translatedKeyName ?: $keyName;
 
@@ -25,7 +25,7 @@ class ValidationMessageHelper extends \Khattab\Prepare\Helpers\ValidationMessage
         );
     }
 
-    public static function foreignKeyErrorMessages(string $keyName = 'foreign_key', array $replaceDefaultErrorMessages = [], string $translatedKeyName = null)
+    public static function foreignKeyErrorMessages(string $keyName = 'foreign_key', array $replaceDefaultErrorMessages = [], ?string $translatedKeyName = null)
     {
         $translatedKeyName = $translatedKeyName ?: $keyName;
 
@@ -185,7 +185,7 @@ class ValidationMessageHelper extends \Khattab\Prepare\Helpers\ValidationMessage
         array $messages,
         string $keyName,
         array $replaceDefaultErrorMessages = [],
-        string $translatedKey = null,
+        ?string $translatedKey = null,
     ): array {
         $translatedKey = $translatedKey ?: $keyName;
 

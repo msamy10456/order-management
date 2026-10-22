@@ -46,7 +46,7 @@ class OtpServiceProvider extends ServiceProvider
             OtpContract::class,
             // OtpLogService::class,
             OrangeService::class,
-//            TwilioService::class
+            //            TwilioService::class
         );
     }
 

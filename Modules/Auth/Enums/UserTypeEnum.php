@@ -7,9 +7,10 @@ use App\Models\User;
 enum UserTypeEnum
 {
     const ADMIN = 0;
-    const USER = 1;
-    const ADMIN_EMPLOYEE = 2;
 
+    const USER = 1;
+
+    const ADMIN_EMPLOYEE = 2;
 
     public static function availableTypes(): array
     {

@@ -3,7 +3,6 @@
 use App\Helpers\GeneralHelper;
 use Illuminate\Support\Facades\Route;
 use Modules\Order\Http\Controllers\OrderController;
-use Modules\Role\Helpers\PermissionHelper;
 
 Route::group(['middleware' => GeneralHelper::getDefaultLoggedUserMiddlewares()], function () {
     Route::prefix('orders')->group(function () {

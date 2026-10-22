@@ -2,16 +2,13 @@
 
 namespace App\Services\Payments;
 
-use App\Exceptions\UnsupportedPaymentMethodException;
 use Illuminate\Contracts\Container\Container;
 use Modules\Payment\Exceptions\PaymentException;
 use Modules\Payment\Services\Contract\PaymentGatewayInterface;
 
 class PaymentGatewayManager
 {
-    public function __construct(private readonly Container $container)
-    {
-    }
+    public function __construct(private readonly Container $container) {}
 
     public function checkGateway(string $method): PaymentGatewayInterface
     {

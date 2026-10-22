@@ -46,8 +46,8 @@ trait VerifiableTrait
             ? $handle
             : User::query()
             // ->onlyAllowedUsers()
-            ->where(User::getUniqueColumnName(), $handle)
-            ->first();
+                ->where(User::getUniqueColumnName(), $handle)
+                ->first();
 
         if (! $user) {
             throw new ValidationErrorsException([
@@ -80,9 +80,10 @@ trait VerifiableTrait
     {
         $is_rand = env('IS_RANDOM', false);
         $otp = 1234;
-        if (!$is_rand) {
+        if (! $is_rand) {
             $otp = rand(1000, 9999);
         }
+
         return $otp;
 
     }

@@ -16,7 +16,7 @@ class PaymobGateway implements PaymentGatewayInterface
             return [
                 'success' => false,
                 'status' => PaymentStatusEnum::FAILED,
-                'transaction_id' => 'PAYMOB-FAIL-' . rand(1000000, 9999999),
+                'transaction_id' => 'PAYMOB-FAIL-'.rand(1000000, 9999999),
                 'message' => 'Paymob transaction was declined.',
                 'details' => [
                     'gateway' => 'paymob',
@@ -28,7 +28,7 @@ class PaymobGateway implements PaymentGatewayInterface
         return [
             'success' => true,
             'status' => PaymentStatusEnum::SUCCESSFUL,
-            'transaction_id' => 'PAYMOB-' . rand(1000000, 9999999),
+            'transaction_id' => 'PAYMOB-'.rand(1000000, 9999999),
             'message' => 'Paymob payment intention processed successfully.',
             'details' => [
                 'gateway' => 'paymob',

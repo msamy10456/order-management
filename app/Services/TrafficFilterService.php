@@ -4,17 +4,21 @@ namespace App\Services;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class TrafficFilterService
 {
     private const VALID_FILTERS = ['1', '2', '3']; // 1: week, 2: month, 3: year
 
     private $filter;
+
     private $filterKey;
+
     private $startDate;
+
     private $endDate;
+
     private $model;
 
     public function __construct($model, $filterKey = 'filter')
@@ -25,12 +29,12 @@ class TrafficFilterService
 
     private function validateFilter(string $filter): string
     {
-        if (!in_array($filter, self::VALID_FILTERS)) {
+        if (! in_array($filter, self::VALID_FILTERS)) {
             return '1';
         }
+
         return $filter;
     }
-
 
     public function analyze(Request $request)
     {
@@ -91,7 +95,7 @@ class TrafficFilterService
             'Tuesday',
             'Wednesday',
             'Thursday',
-            'Friday'
+            'Friday',
         ];
 
         $formatted = [];
@@ -159,7 +163,7 @@ class TrafficFilterService
             'September',
             'October',
             'November',
-            'December'
+            'December',
         ];
 
         $formatted = [];

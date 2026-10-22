@@ -31,7 +31,7 @@ class ImageService
     public function storeOneMediaFromRequest(string $collectionName, string $requestFileName)
     {
         if (isset($this->data[$requestFileName])) {
-            (new FileOperationService())->storeImageFromRequest(
+            (new FileOperationService)->storeImageFromRequest(
                 $this->model,
                 $collectionName,
                 $requestFileName,
@@ -42,7 +42,7 @@ class ImageService
     public function storeOneFileFromRequest(string $collectionName, string $requestFileName)
     {
         if (isset($this->data[$requestFileName])) {
-            (new FileOperationService())->storeFileFromRequest(
+            (new FileOperationService)->storeFileFromRequest(
                 class: $this->model,
                 requestFileName: $requestFileName,
                 collectionName: $collectionName,

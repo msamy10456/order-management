@@ -59,6 +59,7 @@ trait UserRelations
     {
         return $this->hasMany(Order::class);
     }
+
     public function favorites()
     {
         return $this->hasMany(FavoriteModel::class);

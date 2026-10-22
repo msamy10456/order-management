@@ -4,10 +4,7 @@ namespace Modules\Auth\Transformers;
 
 use App\Helpers\ResourceHelper;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Address\Transformers\AddressResource;
 use Modules\Auth\Enums\AuthEnum;
-use Modules\Employee\Transformers\EmployeeResource;
-use Modules\Patient\Transformers\PatientResource;
 use Modules\Role\Transformers\RoleResource;
 
 class UserResource extends JsonResource

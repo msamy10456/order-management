@@ -16,7 +16,9 @@ class PaymentProcessingTest extends TestCase
     use RefreshDatabase;
 
     private User $user;
+
     private Order $confirmedOrder;
+
     private Order $pendingOrder;
 
     protected function setUp(): void

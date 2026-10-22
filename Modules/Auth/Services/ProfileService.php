@@ -3,7 +3,6 @@
 namespace Modules\Auth\Services;
 
 use App\Exceptions\ValidationErrorsException;
-use App\Models\User;
 use App\Services\ImageService;
 
 class ProfileService

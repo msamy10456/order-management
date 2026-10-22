@@ -8,25 +8,25 @@ class GeneralHelper
 {
     public static function adminMiddlewares(): array
     {
-        return array_merge(self::getDefaultLoggedUserMiddlewares(), ['user_type_in:' . UserTypeEnum::ADMIN . '|' . UserTypeEnum::ADMIN_EMPLOYEE ]);
+        return array_merge(self::getDefaultLoggedUserMiddlewares(), ['user_type_in:'.UserTypeEnum::ADMIN.'|'.UserTypeEnum::ADMIN_EMPLOYEE]);
     }
 
     public static function langMiddleware(): string
     {
-        return "localization";
+        return 'localization';
     }
 
     public static function userMiddlewares(): array
     {
         return self::getDefaultLoggedUserMiddlewares(
-            ['user_type_in:' . UserTypeEnum::USER ]
+            ['user_type_in:'.UserTypeEnum::USER]
         );
     }
 
     public static function clientMiddlewares(): array
     {
         return self::getDefaultLoggedUserMiddlewares(
-            ['user_type_in:' . UserTypeEnum::USER]
+            ['user_type_in:'.UserTypeEnum::USER]
         );
     }
 
@@ -40,7 +40,7 @@ class GeneralHelper
 
     public static function vendorOrAdminMiddlewares(): array
     {
-        return self::getDefaultLoggedUserMiddlewares(['user_type_in:' . UserTypeEnum::ADMIN]);
+        return self::getDefaultLoggedUserMiddlewares(['user_type_in:'.UserTypeEnum::ADMIN]);
     }
 
     public static function authMiddleware(): string
@@ -56,6 +56,7 @@ class GeneralHelper
         $str = html_entity_decode($str, ENT_HTML5, 'UTF-8');
         $str = html_entity_decode($str);
         $str = htmlspecialchars_decode($str);
+
         return strip_tags($str);
     }
 
@@ -64,6 +65,7 @@ class GeneralHelper
         if (request()->lang) {
             return $model->getTranslations($key);
         }
-        return "";
+
+        return '';
     }
 }

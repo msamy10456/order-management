@@ -11,6 +11,7 @@ class OtpLogService implements OtpContract
     public function send(string $phoneNumber, string $message): bool
     {
         Mail::to('test@example.com')->send(new OtpLogMail($message));
+
         return true;
     }
 }
