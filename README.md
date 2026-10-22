@@ -217,8 +217,8 @@ That's it! Clients can now process payments with `"method": "stripe"`.
 A complete Postman collection is included in the project root:
 - File: [`postman_collection.json`](postman_collection.json)
 - Includes folders for **Authentication**, **Orders**, and **Payments**.
-- Contains pre-configured environment variables (`baseUrl`, `token`, `order_id`, `payment_id`).
-- Pre-script in Login endpoint automatically populates `{{token}}` upon successful authentication.
+- Contains pre-configured environment variables (`URL`, `ACCESS_TOKEN`).
+- Pre-script in Login endpoint automatically populates `{{ACCESS_TOKEN}}` upon successful authentication.
 
 ---
 
