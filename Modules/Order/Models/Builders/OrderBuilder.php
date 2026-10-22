@@ -32,7 +32,7 @@ class OrderBuilder extends Builder
             'address',
             'status',
             'created_at',
-        ])->withTotalPriceItems()->withCountItems()->user()->items();
+        ])->withTotalPriceItems()->withCountItems()->withPayments()->user()->items();
     }
 
     public function user()
@@ -52,5 +52,9 @@ class OrderBuilder extends Builder
     public function items()
     {
         return $this->with('items');
+    }
+    public function withPayments()
+    {
+        return $this->with('payments');
     }
 }

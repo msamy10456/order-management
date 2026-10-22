@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Auth\Transformers\UserResource;
 use Modules\Order\Enum\OrderMediaEnum;
+use Modules\Payment\Transformers\PaymentResource;
 
 class OrderResource extends JsonResource
 {
@@ -22,12 +23,12 @@ class OrderResource extends JsonResource
             'customer_phone' => $this->whenHas('customer_phone'),
             'address' => $this->whenHas('address'),
             'status' => $this->whenHas('status'),
-            'total_items' => (float) ($this->items_sum_total ?? ($this->relationLoaded('items') ? $this->items->sum('total') : 0)),
-            'total_price' => (float) ($this->items_sum_total ?? ($this->relationLoaded('items') ? $this->items->sum('total') : 0)),
-            'count_items' => (int) ($this->items_sum_quantity ?? ($this->relationLoaded('items') ? $this->items->sum('quantity') : 0)),
+            'total_price' => (float) ($this->items_sum_total ?? 0),
+            'count_items' => (int) ($this->items_sum_quantity ??  0),
             'created_at' => $this->whenHas('created_at'),
             'user' => UserResource::make($this->whenLoaded('user')),
             'items' => OrderItemResource::collection($this->whenLoaded('items')),
+            'payments' => PaymentResource::make($this->whenLoaded('payments')),
         ];
     }
 }

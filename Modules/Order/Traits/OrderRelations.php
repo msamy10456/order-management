@@ -5,6 +5,7 @@ namespace Modules\Order\Traits;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\Order\Models\OrderItem;
 use Modules\Payment\Models\Payment;
 
@@ -20,8 +21,8 @@ trait OrderRelations
         return $this->hasMany(OrderItem::class);
     }
 
-    public function payments(): HasMany
+    public function payments(): HasOne
     {
-        return $this->hasMany(Payment::class);
+        return $this->hasOne(Payment::class);
     }
 }

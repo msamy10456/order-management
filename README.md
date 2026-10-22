@@ -202,7 +202,6 @@ That's it! Clients can now process payments with `"method": "stripe"`.
 | `GET` | `/api/orders/{id}` | Get single order details with items and totals |
 | `PUT` | `/api/orders/{id}` | Update order details / status |
 | `DELETE` | `/api/orders/{id}` | Delete order (blocked if payments exist) |
-| `GET` | `/api/orders/{id}/payments` | Retrieve all payments for a specific order |
 
 ### Payments
 | Method | Endpoint | Description |
@@ -210,7 +209,6 @@ That's it! Clients can now process payments with `"method": "stripe"`.
 | `POST` | `/api/payments` | Process payment simulation for an order (`order_id`, `method`) |
 | `GET` | `/api/payments` | List all payments (paginated, supports `?order_id={id}&status={status}`) |
 | `GET` | `/api/payments/{id}` | Get single payment details |
-| `GET` | `/api/payments/order/{orderId}` | Get payments for a specific order |
 
 ---
 
